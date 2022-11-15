@@ -23,8 +23,8 @@
             /**
              * SEGUIMIENTO DE LOS DATOS RECIBIDOS DEL SERVIDOR
              * */
-            console.log(client);
             client.onreadystatechange = function () {
+                //console.log(client.responseText);
                 document.getElementById('titulo').innerHTML = client.responseText;
             };
             /**

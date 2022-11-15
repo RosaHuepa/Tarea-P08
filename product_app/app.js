@@ -28,7 +28,7 @@ function buscar(e) {
     client.onreadystatechange = function () {
         // SE VERIFICA SI LA RESPUESTA ESTÁ LISTA Y FUE SATISFACTORIA
         if (client.readyState == 4 && client.status == 200) {
-            console.log('[CLIENTE]\n' + client.responseText);
+            console.log('[CLIENTE]\n'+client.responseText);
 
             // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
             let productos = JSON.parse(client.responseText);    // similar a eval('('+client.responseText+')');
@@ -102,7 +102,7 @@ function agregarProducto(e) {
         val = 1;
         alert('Escriba el modelo del producto en el formato correcto');
     }
-    if (finalJSON['detalles'].length > 300) {
+    if (finalJSON['detalles'].length > 250) {
         val = 1;
         alert('El tamaño del atributo detalles paso el límite');
     }
