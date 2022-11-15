@@ -5,11 +5,12 @@
     $data = array();
     // SE VERIFICA HABER RECIBIDO EL ID
     if( isset($_POST['bq']) ) {
-        $id = $_POST['bq'];
+        $bqd = $_POST['bq'];
+
         // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
         if ( $result = $conexion->query("SELECT * FROM productos WHERE nombre LIKE '%$bqd%' or marca LIKE '%$bqd%' or detalles LIKE '%$bqd%'") ) {
             // SE OBTIENEN LOS RESULTADOS
-			$row = $result->fetch_array(MYSQLI_ASSOC);
+			$row = $result->fetch_all(MYSQLI_ASSOC);
 
             if(!is_null($row)) {
                 // SE CODIFICAN A UTF-8 LOS DATOS Y SE MAPEAN AL ARREGLO DE RESPUESTA
@@ -27,5 +28,6 @@
     } 
     
     // SE HACE LA CONVERSIÓN DE ARRAY A JSON
+
     echo json_encode($data, JSON_PRETTY_PRINT);
 ?>
